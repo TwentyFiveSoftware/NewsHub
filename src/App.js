@@ -21,12 +21,14 @@ const sources = {
         'Süddeutsche Zeitung', true, 'p'),
     sueddeutsche: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Fapp%2Fservice%2Frss%2Falles%2Findex.rss%3Foutput%3Drss',
         'Süddeutsche Zeitung', true, 'p', 'img'),
+    taz: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftaz.de%2F!s%3D%26ExportStatus%3DIntern%26SuchRahmen%3DOnline%3Brss%2F',
+        'taz', true, null, 'img'),
 }
 
 const sourceCategories = [
     [sources.spiegelTop, sources.sueddeutscheTop],
     [sources.spiegelEil, sources.sueddeutscheEil],
-    [sources.spiegel, sources.sueddeutsche]
+    [sources.spiegel, sources.sueddeutsche, sources.taz]
 ]
 
 export default function App() {

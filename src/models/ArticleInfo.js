@@ -14,8 +14,10 @@ export default class ArticleInfo {
         if (source.isHtml) {
             let el = document.createElement('html');
             el.innerHTML = text;
-
-            if (el.getElementsByTagName(source.textElementName).length > 0)
+            
+            if (source.textElementName === null)
+                this.text = el.getElementsByTagName('body')[0].textContent;
+            else if (el.getElementsByTagName(source.textElementName).length > 0)
                 this.text = el.getElementsByTagName(source.textElementName)[0].textContent;
 
             if (el.getElementsByTagName(source.imageElementName).length > 0)
