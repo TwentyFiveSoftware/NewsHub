@@ -9,23 +9,23 @@ import ArticleContainer from './components/ArticleContainer';
 import OptionsSection from './components/OptionsSection';
 
 const sources = {
-    spiegelEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Feilmeldungen%2Findex.rss',
-        'Spiegel', false),
     spiegelTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Ftops%2Findex.rss',
+        'Spiegel', false),
+    spiegelEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Feilmeldungen%2Findex.rss',
         'Spiegel', false),
     spiegel: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Findex.rss',
         'Spiegel', false),
-    sueddeutscheEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FEilmeldungen',
-        'Süddeutsche Zeitung', true, 'p'),
     sueddeutscheTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FTopthemen',
         'Süddeutsche Zeitung', true, 'p', 'img'),
+    sueddeutscheEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FEilmeldungen',
+        'Süddeutsche Zeitung', true, 'p'),
     sueddeutsche: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Fapp%2Fservice%2Frss%2Falles%2Findex.rss%3Foutput%3Drss',
         'Süddeutsche Zeitung', true, 'p', 'img'),
 }
 
 const sourceCategories = [
-    [sources.spiegelEil, sources.sueddeutscheEil],
     [sources.spiegelTop, sources.sueddeutscheTop],
+    [sources.spiegelEil, sources.sueddeutscheEil],
     [sources.spiegel, sources.sueddeutsche]
 ]
 
