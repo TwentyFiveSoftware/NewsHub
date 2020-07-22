@@ -25,12 +25,14 @@ const sources = {
         'taz', true, null, 'img'),
     welt: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.welt.de%2Ffeeds%2Ftopnews.rss',
         'Die Welt', false),
+    faz: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.faz.net%2Frss%2Faktuell%2F',
+        'faz', true, 'p', 'img'),
 }
 
 const sourceCategories = [
     [sources.spiegelTop, sources.sueddeutscheTop, sources.welt],
     [sources.spiegelEil, sources.sueddeutscheEil],
-    [sources.spiegel, sources.sueddeutsche, sources.taz, sources.welt]
+    [sources.spiegel, sources.sueddeutsche, sources.taz, sources.welt, sources.faz]
 ]
 
 export default function App() {
