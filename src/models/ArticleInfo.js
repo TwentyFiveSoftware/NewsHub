@@ -14,7 +14,10 @@ export default class ArticleInfo {
         if (source.isHtml) {
             let el = document.createElement('html');
             el.innerHTML = text;
-            
+
+            if (source.name === 'Die Zeit')
+                console.log(el)
+
             if (source.textElementName === null)
                 this.text = el.getElementsByTagName('body')[0].textContent;
             else if (el.getElementsByTagName(source.textElementName).length > 0)

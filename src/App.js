@@ -27,12 +27,14 @@ const sources = {
         'Die Welt', false),
     faz: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.faz.net%2Frss%2Faktuell%2F',
         'faz', true, 'p', 'img'),
+    zeit: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnewsfeed.zeit.de%2Findex',
+        'Die Zeit', true, null, 'img'),
 }
 
 const sourceCategories = [
     [sources.spiegelTop, sources.sueddeutscheTop, sources.welt],
     [sources.spiegelEil, sources.sueddeutscheEil],
-    [sources.spiegel, sources.sueddeutsche, sources.taz, sources.welt, sources.faz]
+    [sources.spiegel, sources.sueddeutsche, sources.taz, sources.welt, sources.faz, sources.zeit]
 ]
 
 export default function App() {
