@@ -14,7 +14,8 @@ export default class ArticleInfo {
 
         if (source.isHtml) {
             let el = document.createElement('html');
-            el.innerHTML = text;
+            this.text = this.text.replace(/http:\/\//g, 'https://');
+            el.innerHTML = this.text;
 
             if (source.name === 'Die Zeit')
                 console.log(el)
@@ -28,7 +29,8 @@ export default class ArticleInfo {
                 this.image = el.getElementsByTagName(source.imageElementName)[0].getAttribute('src');
         }
 
-        this.image = this.image.replace('http://', 'https://');
-        this.url = this.url.replace('http://', 'https://');
+        this.image = this.image.replace(/http:\/\//g, 'https://');
+        this.url = this.url.replace(/http:\/\//g, 'https://');
+        this.text = this.text.replace(/http:\/\//g, 'https://');
     }
 }
