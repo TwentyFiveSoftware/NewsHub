@@ -1,9 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+:root {
+  --shadow-soft: 0 0 0.75rem 0 rgba(0, 0, 0, 0.1);
+  --color-white: #FFFFFF;
+  --color-background: #F4F4F4;
+  --color-black: #000000;
+  --color-accent: #9FCE80;
+}
+
 * {
   font-family: "Nunito", sans-serif;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+}
+
+html {
+  font-size: 10px;
+}
+
+.app {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+.header {
+  height: 5.5rem;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  padding: 0 5rem;
+  align-items: center;
+  grid-template-columns: max-content 1fr max-content;
+}
+.header img {
+  height: 2.5rem;
+}
+.header .github {
+  display: flex;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-black);
+  transition: color 0.2s;
+}
+.header .github:hover {
+  color: var(--color-accent);
+}
+.header .github svg {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+.header .github div {
+  font-size: 1.7rem;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=style.css.map */
