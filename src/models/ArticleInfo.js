@@ -1,10 +1,11 @@
 export default class ArticleInfo {
-    constructor(title, image, text, date, source, url) {
+    constructor(title, image, text, date, source, url, sourceIndex) {
         this.title = title;
         this.image = image;
         this.text = text;
         this.source = source;
         this.url = url;
+        this.sourceIndex = sourceIndex;
 
         let d = new Date(date);
         this.date = d.getTime();

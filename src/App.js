@@ -33,10 +33,12 @@ export default function App() {
         const fetchArticles = async () => {
             let fetchedArticles = [];
 
-            for (let source of Object.values(sources)) {
+            for (let i = 0; i < Object.values(sources).length; i++) {
+                let source = Object.values(sources)[i];
+
                 for (let url of source.urls) {
                     const result = await axios(url);
-                    fetchedArticles.push(...result.data.items.map(article => new ArticleInfo(article.title, article.enclosure.link, article.description, article.pubDate, source, article.link)));
+                    fetchedArticles.push(...result.data.items.map(article => new ArticleInfo(article.title, article.enclosure.link, article.description, article.pubDate, source, article.link, i)));
                 }
             }
 
@@ -47,6 +49,8 @@ export default function App() {
         fetchArticles();
     }, []);
 
+    let visibleArticles = articles.filter(article => selectedSources[article.sourceIndex]);
+
     return (
         <Fragment>
             <Header/>
@@ -56,7 +60,7 @@ export default function App() {
                 setSelectedSources(newSelectedSources)
             }}/>
             <div className={'divider'}/>
-            <ArticleContainer articles={articles}/>
+            <ArticleContainer articles={visibleArticles}/>
         </Fragment>
     );
 }
