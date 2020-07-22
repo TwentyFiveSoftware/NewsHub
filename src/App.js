@@ -6,7 +6,7 @@ import Source from './models/Source';
 
 import Header from './components/Header';
 import ArticleContainer from './components/ArticleContainer';
-// import OptionsSection from './components/OptionsSection';
+import OptionsSection from './components/OptionsSection';
 
 const sources = {
     spiegel: new Source([
@@ -49,8 +49,8 @@ export default function App() {
     return (
         <Fragment>
             <Header/>
-            {/*<OptionsSection onSelect={index => setSelectedSourceCategoryIndex(index)} selected={selectedSourceCategoryIndex}/>*/}
-            {/*<div className={'divider'}/>*/}
+            <OptionsSection/>
+            <div className={'divider'}/>
             <ArticleContainer articles={articles}/>
         </Fragment>
     );

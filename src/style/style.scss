@@ -136,31 +136,25 @@ body {
     height: max-content;
     display: flex;
     padding: 3rem 5rem;
-    justify-content: flex-end;
 }
 
-.selection-button {
+.source-selection-button {
     width: max-content;
-    height: max-content;
+    height: 3.5rem;
     display: flex;
-    padding: 0.8rem 3rem;
+    padding: 0.7rem 3rem;
     background-color: var(--color-white);
     font-size: 1.5rem;
     align-items: center;
-    border-radius: 10rem;
+    border-radius: 0.5rem;
     box-shadow: var(--shadow-soft);
     cursor: pointer;
     user-select: none;
     margin-left: 1.5rem;
     color: var(--color-black);
 
-    &--selected {
-        background-color: var(--color-accent);
-        color: var(--color-white);
-    }
-
-    svg {
-        margin-right: 0.7rem;
+    img {
+        height: 70%;
     }
 }
 

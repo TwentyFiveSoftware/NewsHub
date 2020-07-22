@@ -1,22 +1,23 @@
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faExclamationTriangle, faFire, faTags} from '@fortawesome/free-solid-svg-icons';
+
+import logoSpiegel from '../assets/logos/spiegel.png';
+import logoSpiegelWhite from '../assets/logos/spiegel-white.png';
+import logoSueddeutsche from '../assets/logos/sueddeutsche.png';
+import logoSueddeutscheWhite from '../assets/logos/sueddeutsche-white.png';
 
 export default function OptionsSection({onSelect, selected}) {
     return (
         <div className={'options-selection'}>
-            <SelectionButton icon={faFire} text={'Topmeldungen'} selected={selected === 0} click={() => onSelect(0)}/>
-            <SelectionButton icon={faExclamationTriangle} text={'Eilmeldungen'} selected={selected === 1} click={() => onSelect(1)}/>
-            <SelectionButton icon={faTags} text={'Alle Artikel'} selected={selected === 2} click={() => onSelect(2)}/>
+            <SourceSelectionButton images={[logoSpiegel, logoSpiegelWhite]} color={'#E54316'} selected={false}/>
+            <SourceSelectionButton images={[logoSueddeutsche, logoSueddeutscheWhite]} color={'#000000'} selected={false}/>
         </div>
     );
 }
 
-function SelectionButton({icon, text, selected, click}) {
+function SourceSelectionButton({images, color, selected, click}) {
     return (
-        <div className={'selection-button ' + (selected ? 'selection-button--selected' : '')} onClick={() => click()}>
-            <FontAwesomeIcon icon={icon}/>
-            <div>{text}</div>
+        <div className={'source-selection-button'} style={{backgroundColor: selected ? color : ''}} onClick={() => click()}>
+            <img src={images[selected ? 1 : 0]} alt={''}/>
         </div>
     );
 }
