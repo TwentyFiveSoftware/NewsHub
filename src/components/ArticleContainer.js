@@ -13,14 +13,19 @@ export default function ArticleContainer({articles}) {
         return () => window.removeEventListener('resize', handleResize);
     });
 
+    let articleColumns = [];
+    for (let i = 0; i < articleColumnCount; i++) articleColumns[i] = [];
+    articles.forEach((article, index) => articleColumns[index % articleColumnCount].push(article))
 
     return (
         <div className={'article-container'} style={{gridTemplateColumns: `repeat(${articleColumnCount}, max-content)`}}>
-            <div className={'article-container__column'}>
-                {articles.map((article, index) =>
-                    <Article articleInfo={article} key={index}/>)
-                }
-            </div>
+            {articleColumns.map((column, cIndex) =>
+                <div className={'article-container__column'} key={cIndex}>
+                    {column.map((article, rIndex) =>
+                        <Article articleInfo={article} key={rIndex}/>)
+                    }
+                </div>
+            )}
         </div>
     );
 }
