@@ -7,6 +7,7 @@
   --color-light: #AAAAAA;
   --color-black: #000000;
   --color-accent: #9FCE80;
+  --color-divider: #DBDBDB;
 }
 
 * {
@@ -20,10 +21,11 @@ html {
   font-size: 10px;
 }
 
-.app {
-  width: 100vw;
+body {
+  width: 100%;
   min-height: 100vh;
   background-color: var(--color-background);
+  position: relative;
 }
 
 .header {
@@ -59,7 +61,7 @@ html {
 }
 
 .article-container {
-  padding: 0 3rem 5rem 3rem;
+  padding: 3rem 3rem 5rem 3rem;
   display: grid;
   width: max-content;
 }
@@ -143,6 +145,12 @@ html {
 }
 .selection-button svg {
   margin-right: 0.7rem;
+}
+
+.divider {
+  height: 0.1rem;
+  background-color: var(--color-divider);
+  margin: 0 5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

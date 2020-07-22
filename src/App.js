@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import axios from 'axios';
 
 import ArticleInfo from './models/ArticleInfo';
@@ -33,10 +33,11 @@ export default function App() {
     }, []);
 
     return (
-        <div className="app">
+        <Fragment>
             <Header/>
             <OptionsSection onSelect={listIndex => setSelectedArticleListIndex(listIndex)} selected={selectedArticleListIndex}/>
+            <div className={'divider'}/>
             <ArticleContainer articles={articles[selectedArticleListIndex]}/>
-        </div>
+        </Fragment>
     );
 }
