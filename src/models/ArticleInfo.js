@@ -29,5 +29,6 @@ export default class ArticleInfo {
         }
 
         this.image = this.image.replace('http://', 'https://');
+        this.url = this.url.replace('http://', 'https://');
     }
 }
