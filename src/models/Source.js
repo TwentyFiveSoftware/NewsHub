@@ -1,7 +1,7 @@
 export default class Source {
 
-    constructor(url, name, isHtml, textElementName, imageElementName) {
-        this.url = url;
+    constructor(urls, name, isHtml, textElementName, imageElementName) {
+        this.urls = urls;
         this.name = name;
         this.isHtml = isHtml;
         this.textElementName = textElementName;

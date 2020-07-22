@@ -6,59 +6,41 @@ import Source from './models/Source';
 
 import Header from './components/Header';
 import ArticleContainer from './components/ArticleContainer';
-import OptionsSection from './components/OptionsSection';
+// import OptionsSection from './components/OptionsSection';
 
 const sources = {
-    spiegelTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Ftops%2Findex.rss',
+    spiegel: new Source([
+            'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Ftops%2Findex.rss',
+            'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Findex.rss'],
         'Spiegel', false),
-    spiegelEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Feilmeldungen%2Findex.rss',
-        'Spiegel', false),
-    spiegel: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Findex.rss',
-        'Spiegel', false),
-    sueddeutscheTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FTopthemen',
+    sueddeutsche: new Source(['https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Fapp%2Fservice%2Frss%2Falles%2Findex.rss%3Foutput%3Drss'],
         'Süddeutsche Zeitung', true, 'p', 'img'),
-    sueddeutscheEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FEilmeldungen',
-        'Süddeutsche Zeitung', true, 'p'),
-    sueddeutsche: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Fapp%2Fservice%2Frss%2Falles%2Findex.rss%3Foutput%3Drss',
-        'Süddeutsche Zeitung', true, 'p', 'img'),
-    taz: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftaz.de%2F!s%3D%26ExportStatus%3DIntern%26SuchRahmen%3DOnline%3Brss%2F',
+    taz: new Source(['https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftaz.de%2F!s%3D%26ExportStatus%3DIntern%26SuchRahmen%3DOnline%3Brss%2F'],
         'taz', true, null, 'img'),
-    welt: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.welt.de%2Ffeeds%2Ftopnews.rss',
+    welt: new Source(['https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.welt.de%2Ffeeds%2Ftopnews.rss'],
         'Die Welt', false),
-    faz: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.faz.net%2Frss%2Faktuell%2F',
+    faz: new Source(['https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.faz.net%2Frss%2Faktuell%2F'],
         'faz', true, 'p', 'img'),
-    zeit: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnewsfeed.zeit.de%2Findex',
+    zeit: new Source(['https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnewsfeed.zeit.de%2Findex'],
         'Die Zeit', true, null, 'img'),
 }
 
-const sourceCategories = [
-    [sources.spiegelTop, sources.sueddeutscheTop, sources.welt],
-    [sources.spiegelEil, sources.sueddeutscheEil],
-    [sources.spiegel, sources.sueddeutsche, sources.taz, sources.welt, sources.faz, sources.zeit]
-]
-
 export default function App() {
-    const [articles, setArticles] = useState([[], [], []]);
-    const [selectedSourceCategoryIndex, setSelectedSourceCategoryIndex] = useState(0);
+    const [articles, setArticles] = useState([]);
 
     useEffect(() => {
         const fetchArticles = async () => {
-            let articleLists = [];
+            let fetchedArticles = [];
 
-            for (let categoryIndex = 0; categoryIndex < sourceCategories.length; categoryIndex++) {
-                for (let source of sourceCategories[categoryIndex]) {
-                    const result = await axios(source.url);
-
-                    if (articleLists[categoryIndex] === undefined)
-                        articleLists[categoryIndex] = [];
-
-                    articleLists[categoryIndex].push(...result.data.items.map(article => new ArticleInfo(article.title, article.enclosure.link, article.description, article.pubDate, source, article.link)));
+            for (let source of Object.values(sources)) {
+                for (let url of source.urls) {
+                    const result = await axios(url);
+                    fetchedArticles.push(...result.data.items.map(article => new ArticleInfo(article.title, article.enclosure.link, article.description, article.pubDate, source, article.link)));
                 }
-
-                articleLists[categoryIndex].sort((a, b) => a.date > b.date ? -1 : 1);
             }
 
-            setArticles(articleLists);
+            fetchedArticles.sort((a, b) => a.date > b.date ? -1 : 1);
+            setArticles(fetchedArticles);
         };
 
         fetchArticles();
@@ -67,9 +49,9 @@ export default function App() {
     return (
         <Fragment>
             <Header/>
-            <OptionsSection onSelect={index => setSelectedSourceCategoryIndex(index)} selected={selectedSourceCategoryIndex}/>
-            <div className={'divider'}/>
-            <ArticleContainer articles={articles[selectedSourceCategoryIndex]}/>
+            {/*<OptionsSection onSelect={index => setSelectedSourceCategoryIndex(index)} selected={selectedSourceCategoryIndex}/>*/}
+            {/*<div className={'divider'}/>*/}
+            <ArticleContainer articles={articles}/>
         </Fragment>
     );
 }
