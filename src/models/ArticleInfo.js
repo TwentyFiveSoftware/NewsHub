@@ -1,9 +1,8 @@
 export default class ArticleInfo {
-    constructor(title, image, text, date, category, source, url) {
+    constructor(title, image, text, date, source, url) {
         this.title = title;
         this.image = image;
         this.text = text;
-        this.category = category;
         this.source = source;
         this.url = url;
 
