@@ -42,8 +42,11 @@ export default function App() {
                 }
             }
 
-            fetchedArticles.sort((a, b) => a.date > b.date ? -1 : 1);
-            setArticles(fetchedArticles);
+            const uniqueArticles = Array.from(new Set(fetchedArticles.map(article => article.title)))
+                .map(title => fetchedArticles.find(article => article.title === title))
+                .sort((a, b) => a.date > b.date ? -1 : 1);
+
+            setArticles(uniqueArticles);
         };
 
         fetchArticles();
