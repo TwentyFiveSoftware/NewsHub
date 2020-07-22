@@ -47,6 +47,18 @@ export default function App() {
         };
 
         fetchArticles();
+
+        if (localStorage.getItem('selectedSources') !== null) {
+            let savedSelectedSources = JSON.parse(localStorage.getItem('selectedSources'));
+
+            if (savedSelectedSources.filter(s => s).length === 0) {
+                savedSelectedSources[0] = true;
+                savedSelectedSources[1] = true;
+            }
+
+            setSelectedSources(savedSelectedSources);
+        }
+
     }, []);
 
     let visibleArticles = articles.filter(article => selectedSources[article.sourceIndex]);
@@ -58,6 +70,7 @@ export default function App() {
                 let newSelectedSources = [...selectedSources];
                 newSelectedSources[clickedIndex] = !newSelectedSources[clickedIndex];
                 setSelectedSources(newSelectedSources)
+                localStorage.setItem('selectedSources', JSON.stringify(newSelectedSources));
             }}/>
             <div className={'divider'}/>
             <ArticleContainer articles={visibleArticles}/>
