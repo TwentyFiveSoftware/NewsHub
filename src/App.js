@@ -12,13 +12,15 @@ const sources = {
     spiegelTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Ftops%2Findex.rss', 'Spiegel', true, ''),
     spiegelEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Feilmeldungen%2Findex.rss', 'Spiegel', true, ''),
     spiegel: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Findex.rss', 'Spiegel', true, ''),
+    sueddeutscheTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FTopthemen', 'Süddeutsche Zeitung', false, /<p>|<\/p>/g),
     sueddeutscheEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FEilmeldungen', 'Süddeutsche Zeitung', false, /<p>|<\/p>/g),
+    sueddeutsche: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Fapp%2Fservice%2Frss%2Falles%2Findex.rss%3Foutput%3Drss', 'Süddeutsche Zeitung', false, /<p>|<\/p>/g),
 }
 
 const sourceCategories = [
-    [sources.spiegelTop],
+    [sources.spiegelTop, sources.sueddeutscheTop],
     [sources.spiegelEil, sources.sueddeutscheEil],
-    [sources.spiegel]
+    [sources.spiegel, sources.sueddeutsche]
 ]
 
 export default function App() {
