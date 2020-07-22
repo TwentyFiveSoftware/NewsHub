@@ -27,6 +27,7 @@ const sources = {
 
 export default function App() {
     const [articles, setArticles] = useState([]);
+    const [selectedSources, setSelectedSources] = useState([true, true, false, false, false, false]);
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -49,7 +50,11 @@ export default function App() {
     return (
         <Fragment>
             <Header/>
-            <OptionsSection/>
+            <OptionsSection selected={selectedSources} onSelect={clickedIndex => {
+                let newSelectedSources = [...selectedSources];
+                newSelectedSources[clickedIndex] = !newSelectedSources[clickedIndex];
+                setSelectedSources(newSelectedSources)
+            }}/>
             <div className={'divider'}/>
             <ArticleContainer articles={articles}/>
         </Fragment>

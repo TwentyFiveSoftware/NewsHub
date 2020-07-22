@@ -16,12 +16,12 @@ import logoZeitWhite from '../assets/logos/zeit-white.png';
 export default function OptionsSection({onSelect, selected}) {
     return (
         <div className={'options-selection'}>
-            <SourceSelectionButton images={[logoSpiegel, logoSpiegelWhite]} color={'#E54316'} selected={false}/>
-            <SourceSelectionButton images={[logoSueddeutsche, logoSueddeutscheWhite]} color={'#000000'} selected={false}/>
-            <SourceSelectionButton images={[logoTaz, logoTazWhite]} color={'#E20336'} selected={false}/>
-            <SourceSelectionButton images={[logoWelt, logoWeltWhite]} color={'#013959'} selected={false}/>
-            <SourceSelectionButton images={[logoFaz, logoFazWhite]} color={'#000000'} selected={false}/>
-            <SourceSelectionButton images={[logoZeit, logoZeitWhite]} color={'#000000'} selected={false}/>
+            <SourceSelectionButton images={[logoSpiegel, logoSpiegelWhite]} color={'#E54316'} selected={selected[0]} click={() => onSelect(0)}/>
+            <SourceSelectionButton images={[logoSueddeutsche, logoSueddeutscheWhite]} color={'#000000'} selected={selected[1]} click={() => onSelect(1)}/>
+            <SourceSelectionButton images={[logoTaz, logoTazWhite]} color={'#E20336'} selected={selected[2]} click={() => onSelect(2)}/>
+            <SourceSelectionButton images={[logoWelt, logoWeltWhite]} color={'#013959'} selected={selected[3]} click={() => onSelect(3)}/>
+            <SourceSelectionButton images={[logoFaz, logoFazWhite]} color={'#000000'} selected={selected[4]} click={() => onSelect(4)}/>
+            <SourceSelectionButton images={[logoZeit, logoZeitWhite]} color={'#000000'} selected={selected[5]} click={() => onSelect(5)}/>
         </div>
     );
 }
