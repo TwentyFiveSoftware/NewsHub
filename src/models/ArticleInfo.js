@@ -28,5 +28,6 @@ export default class ArticleInfo {
                 this.image = el.getElementsByTagName(source.imageElementName)[0].getAttribute('src');
         }
 
+        this.image = this.image.replace('http://', 'https://');
     }
 }
