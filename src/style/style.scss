@@ -73,6 +73,12 @@ body {
     display: grid;
     width: max-content;
 
+    @media (max-width: 500px) {
+        width: 100%;
+        padding: 1rem 1rem 4rem 1rem;
+        display: block;
+    }
+
     &__column {
         height: max-content;
         padding: 1.5rem;
@@ -94,6 +100,10 @@ body {
 
     &:hover {
         transform: scale(1.02);
+    }
+
+    @media (max-width: 500px) {
+        width: 100%;
     }
 
     &__image {
@@ -137,6 +147,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     padding: 3rem 5rem;
+
+    @media (max-width: 500px) {
+        padding: 2rem 1.5rem;
+    }
 }
 
 .source-selection-button {
@@ -157,10 +171,20 @@ body {
     img {
         height: 70%;
     }
+
+    @media (max-width: 500px) {
+        margin: 0.6rem 0 0 0.6rem;
+        height: 3rem;
+    }
 }
 
 .divider {
     height: 0.1rem;
     background-color: var(--color-divider);
     margin: 0 5rem;
+
+    @media (max-width: 500px) {
+        margin: 0 1.5rem;
+    }
 }
+

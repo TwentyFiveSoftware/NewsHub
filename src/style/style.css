@@ -65,6 +65,13 @@ body {
   display: grid;
   width: max-content;
 }
+@media (max-width: 500px) {
+  .article-container {
+    width: 100%;
+    padding: 1rem 1rem 4rem 1rem;
+    display: block;
+  }
+}
 .article-container__column {
   height: max-content;
   padding: 1.5rem;
@@ -85,6 +92,11 @@ body {
 }
 .article:hover {
   transform: scale(1.02);
+}
+@media (max-width: 500px) {
+  .article {
+    width: 100%;
+  }
 }
 .article__image {
   height: 20rem;
@@ -123,6 +135,11 @@ body {
   flex-wrap: wrap;
   padding: 3rem 5rem;
 }
+@media (max-width: 500px) {
+  .options-selection {
+    padding: 2rem 1.5rem;
+  }
+}
 
 .source-selection-button {
   width: max-content;
@@ -142,11 +159,22 @@ body {
 .source-selection-button img {
   height: 70%;
 }
+@media (max-width: 500px) {
+  .source-selection-button {
+    margin: 0.6rem 0 0 0.6rem;
+    height: 3rem;
+  }
+}
 
 .divider {
   height: 0.1rem;
   background-color: var(--color-divider);
   margin: 0 5rem;
+}
+@media (max-width: 500px) {
+  .divider {
+    margin: 0 1.5rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
