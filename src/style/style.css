@@ -4,6 +4,7 @@
   --shadow-hard: 0 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
   --color-white: #FFFFFF;
   --color-background: #F4F4F4;
+  --color-light: #AAAAAA;
   --color-black: #000000;
   --color-accent: #9FCE80;
 }
@@ -79,6 +80,11 @@ html {
   display: grid;
   border-radius: 1.5rem;
   box-shadow: var(--shadow-hard);
+  text-decoration: none;
+  transition: 0.15s;
+}
+.article:hover {
+  transform: scale(1.02);
 }
 .article__image {
   height: 20rem;
@@ -87,9 +93,10 @@ html {
   background-repeat: no-repeat;
 }
 .article__bottom {
-  padding: 2rem 2rem;
+  padding: 2rem 2rem 1.5rem 2rem;
   display: grid;
   row-gap: 1rem;
+  color: var(--color-black);
 }
 .article__title {
   overflow: hidden;
@@ -101,6 +108,13 @@ html {
   overflow: hidden;
   font-size: 1.4rem;
   line-height: 1.2;
+}
+.article__info {
+  padding-top: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-light);
+  font-size: 1.2rem;
 }
 
 /*# sourceMappingURL=style.css.map */

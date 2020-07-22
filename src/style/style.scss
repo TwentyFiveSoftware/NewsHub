@@ -6,6 +6,7 @@
 
     --color-white: #FFFFFF;
     --color-background: #F4F4F4;
+    --color-light: #AAAAAA;
     --color-black: #000000;
     --color-accent: #9FCE80;
 }
@@ -88,6 +89,12 @@ html {
     display: grid;
     border-radius: 1.5rem;
     box-shadow: var(--shadow-hard);
+    text-decoration: none;
+    transition: 0.15s;
+
+    &:hover {
+        transform: scale(1.02);
+    }
 
     &__image {
         height: 20rem;
@@ -97,9 +104,10 @@ html {
     }
 
     &__bottom {
-        padding: 2rem 2rem;
+        padding: 2rem 2rem 1.5rem 2rem;
         display: grid;
         row-gap: 1rem;
+        color: var(--color-black);
     }
 
     &__title {
@@ -113,5 +121,13 @@ html {
         overflow: hidden;
         font-size: 1.4rem;
         line-height: 1.2;
+    }
+
+    &__info  {
+        padding-top: 0.2rem;
+        display: flex;
+        justify-content: space-between;
+        color: var(--color-light);
+        font-size: 1.2rem;
     }
 }
