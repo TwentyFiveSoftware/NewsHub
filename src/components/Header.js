@@ -12,7 +12,7 @@ export default class Header extends Component {
             <div className={'header'}>
                 <img src={logo} alt={''}/>
                 <div/>
-                <a className="github" href={'https://github.com/TwentyFiveSoftware'}>
+                <a className="github" href={'https://github.com/TwentyFiveSoftware/NewsHub'}>
                     <FontAwesomeIcon icon={faGithub}/>
                     <div>Github</div>
                 </a>
