@@ -46,6 +46,8 @@ export default function App() {
 
                     articleLists[categoryIndex].push(...result.data.items.map(article => new ArticleInfo(article.title, article.enclosure.link, article.description, article.pubDate, source, article.link)));
                 }
+
+                articleLists[categoryIndex].sort((a, b) => a.date > b.date ? -1 : 1);
             }
 
             setArticles(articleLists);

@@ -7,9 +7,9 @@ export default class ArticleInfo {
         this.url = url;
 
         let d = new Date(date);
-        this.date = `${(d.getDate() < 10 ? '0' : '') + d.getDate()}.${(d.getMonth() + 1 < 10 ? '0' : '') + (d.getMonth() + 1)}.${d.getFullYear()} `
+        this.date = d.getTime();
+        this.dateString = `${(d.getDate() < 10 ? '0' : '') + d.getDate()}.${(d.getMonth() + 1 < 10 ? '0' : '') + (d.getMonth() + 1)}.${d.getFullYear()} `
             + `${(d.getHours() < 10 ? '0' : '') + d.getHours()}:${(d.getMinutes() < 10 ? '0' : '') + d.getMinutes()}`;
-
 
         if (source.isHtml) {
             let el = document.createElement('html');
