@@ -135,6 +135,7 @@ body {
 .options-selection {
     height: max-content;
     display: flex;
+    flex-wrap: wrap;
     padding: 3rem 5rem;
 }
 
@@ -150,7 +151,7 @@ body {
     box-shadow: var(--shadow-soft);
     cursor: pointer;
     user-select: none;
-    margin-left: 1.5rem;
+    margin: 1.5rem 0 0 1.5rem;
     color: var(--color-black);
 
     img {
