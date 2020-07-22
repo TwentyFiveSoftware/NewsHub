@@ -26,7 +26,7 @@ html {
     width: 100vw;
     min-height: 100vh;
     background-color: var(--color-background);
-    display: grid;
+    //display: grid;
 }
 
 
@@ -68,10 +68,10 @@ html {
 }
 
 .article-container {
-    padding: 3rem 5rem;
+    padding: 0 3rem 5rem 3rem;
     display: grid;
     width: max-content;
-    justify-self: center;
+    //justify-self: center;
 
     &__column {
         height: max-content;
@@ -123,11 +123,43 @@ html {
         line-height: 1.2;
     }
 
-    &__info  {
+    &__info {
         padding-top: 0.2rem;
         display: flex;
         justify-content: space-between;
         color: var(--color-light);
         font-size: 1.2rem;
+    }
+}
+
+.options-selection {
+    height: max-content;
+    display: flex;
+    padding: 3rem 5rem;
+    justify-content: flex-end;
+}
+
+.selection-button {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    padding: 0.8rem 3rem;
+    background-color: var(--color-white);
+    font-size: 1.5rem;
+    align-items: center;
+    border-radius: 10rem;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    user-select: none;
+    margin-left: 1.5rem;
+    color: var(--color-black);
+
+    &--selected {
+        background-color: var(--color-accent);
+        color: var(--color-white);
+    }
+
+    svg {
+        margin-right: 0.7rem;
     }
 }
