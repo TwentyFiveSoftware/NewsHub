@@ -11,7 +11,7 @@ export default function Article({articleInfo}) {
                 <div className={'article__title'}>{articleInfo.title}</div>
                 <div className={'article__text'}>{articleInfo.text}</div>
                 <div className={'article__info'}>
-                    <div>{articleInfo.source}</div>
+                    <div>{articleInfo.source.name}</div>
                     <div>{articleInfo.date}</div>
                 </div>
             </div>

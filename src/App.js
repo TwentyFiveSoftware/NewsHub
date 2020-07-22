@@ -9,17 +9,23 @@ import ArticleContainer from './components/ArticleContainer';
 import OptionsSection from './components/OptionsSection';
 
 const sources = {
-    spiegelTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Ftops%2Findex.rss', 'Spiegel', true, ''),
-    spiegelEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Feilmeldungen%2Findex.rss', 'Spiegel', true, ''),
-    spiegel: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Findex.rss', 'Spiegel', true, ''),
-    sueddeutscheTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FTopthemen', 'Süddeutsche Zeitung', false, /<p>|<\/p>/g),
-    sueddeutscheEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FEilmeldungen', 'Süddeutsche Zeitung', false, /<p>|<\/p>/g),
-    sueddeutsche: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Fapp%2Fservice%2Frss%2Falles%2Findex.rss%3Foutput%3Drss', 'Süddeutsche Zeitung', false, /<p>|<\/p>/g),
+    spiegelEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Feilmeldungen%2Findex.rss',
+        'Spiegel', false),
+    spiegelTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Ftops%2Findex.rss',
+        'Spiegel', false),
+    spiegel: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.spiegel.de%2Fschlagzeilen%2Findex.rss',
+        'Spiegel', false),
+    sueddeutscheEil: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FEilmeldungen',
+        'Süddeutsche Zeitung', true, 'p'),
+    sueddeutscheTop: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Frss%2FTopthemen',
+        'Süddeutsche Zeitung', true, 'p', 'img'),
+    sueddeutsche: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.sueddeutsche.de%2Fapp%2Fservice%2Frss%2Falles%2Findex.rss%3Foutput%3Drss',
+        'Süddeutsche Zeitung', true, 'p', 'img'),
 }
 
 const sourceCategories = [
-    [sources.spiegelTop, sources.sueddeutscheTop],
     [sources.spiegelEil, sources.sueddeutscheEil],
+    [sources.spiegelTop, sources.sueddeutscheTop],
     [sources.spiegel, sources.sueddeutsche]
 ]
 
@@ -38,8 +44,7 @@ export default function App() {
                     if (articleLists[categoryIndex] === undefined)
                         articleLists[categoryIndex] = [];
 
-                    articleLists[categoryIndex].push(...result.data.items.map(article => new ArticleInfo(article.title, source.providesImage ? article.enclosure.link : null,
-                        article.description.replace(source.replace, ''), article.pubDate, source.name, article.link)));
+                    articleLists[categoryIndex].push(...result.data.items.map(article => new ArticleInfo(article.title, article.enclosure.link, article.description, article.pubDate, source, article.link)));
                 }
             }
 
