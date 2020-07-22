@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 :root {
   --shadow-soft: 0 0 0.75rem 0 rgba(0, 0, 0, 0.1);
+  --shadow-hard: 0 0.3rem 1rem 0 rgba(0, 0, 0, 0.1);
   --color-white: #FFFFFF;
   --color-background: #F4F4F4;
   --color-black: #000000;
@@ -54,6 +55,42 @@ html {
 .header .github div {
   font-size: 1.7rem;
   font-weight: 600;
+}
+
+.article-container {
+  padding: 3rem 5rem;
+  display: flex;
+}
+
+.article {
+  width: 40rem;
+  height: max-content;
+  background-color: var(--color-white);
+  display: grid;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-hard);
+}
+.article__image {
+  height: 20rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.article__bottom {
+  padding: 2rem 2rem;
+  display: grid;
+  row-gap: 1rem;
+}
+.article__title {
+  overflow: hidden;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  font-weight: 600;
+}
+.article__text {
+  overflow: hidden;
+  font-size: 1.4rem;
+  line-height: 1.2;
 }
 
 /*# sourceMappingURL=style.css.map */
