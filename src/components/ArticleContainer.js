@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Article from './Article';
 
-const calculateArticleColumnCount = () => Math.floor((window.innerWidth - 100) / 430);
+const calculateArticleColumnCount = () => Math.max(Math.floor((window.innerWidth - 100) / 430), 1);
 
 export default function ArticleContainer({articles}) {
     const [articleColumnCount, setArticleColumnCount] = useState(calculateArticleColumnCount());
