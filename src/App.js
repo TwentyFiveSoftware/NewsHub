@@ -23,12 +23,14 @@ const sources = {
         'Süddeutsche Zeitung', true, 'p', 'img'),
     taz: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftaz.de%2F!s%3D%26ExportStatus%3DIntern%26SuchRahmen%3DOnline%3Brss%2F',
         'taz', true, null, 'img'),
+    welt: new Source('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.welt.de%2Ffeeds%2Ftopnews.rss',
+        'Die Welt', false),
 }
 
 const sourceCategories = [
-    [sources.spiegelTop, sources.sueddeutscheTop],
+    [sources.spiegelTop, sources.sueddeutscheTop, sources.welt],
     [sources.spiegelEil, sources.sueddeutscheEil],
-    [sources.spiegel, sources.sueddeutsche, sources.taz]
+    [sources.spiegel, sources.sueddeutsche, sources.taz, sources.welt]
 ]
 
 export default function App() {
