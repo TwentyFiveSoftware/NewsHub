@@ -29,7 +29,9 @@ export default class ArticleInfo {
                 this.image = el.getElementsByTagName(source.imageElementName)[0].getAttribute('src');
         }
 
-        this.image = this.image.replace(/http:\/\//g, 'https://');
+        if (this.image !== undefined)
+            this.image = this.image.replace(/http:\/\//g, 'https://');
+        
         this.url = this.url.replace(/http:\/\//g, 'https://');
         this.text = this.text.replace(/http:\/\//g, 'https://');
     }
